@@ -1,8 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="VkazamTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/VkazamActionBar</item>
     </style>
+
+    <!-- ActionBar styles -->
+    <style name="VkazamActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/violet_moderate</item>
+    </style>
+
 
 </resources>
