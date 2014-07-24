@@ -34,7 +34,7 @@ public abstract class BindBaseAdapter extends BaseAdapter {
 
         View v;
         if (convertView == null) {
-            v = newView(parent);
+            v = newView(parent, position);
         } else {
             v = convertView;
         }
@@ -48,9 +48,10 @@ public abstract class BindBaseAdapter extends BaseAdapter {
      * element is not exists and it is needed to create it from layout.
      *
      * @param parent parent view group
+     * @param position position of element that will be represented by this view
      * @return created View
      */
-    protected abstract View newView(ViewGroup parent);
+    protected abstract View newView(ViewGroup parent, int position);
 
     /**
      * Calls when another taken in {@link BindBaseAdapter#getView(int, android.view.View, android.view.ViewGroup)}
@@ -59,5 +60,5 @@ public abstract class BindBaseAdapter extends BaseAdapter {
      * @param view given created of existing view
      * @param position position of this view
      */
-    protected abstract void bindView(View view, final int position);
+    protected abstract void bindView(View view, int position);
 }

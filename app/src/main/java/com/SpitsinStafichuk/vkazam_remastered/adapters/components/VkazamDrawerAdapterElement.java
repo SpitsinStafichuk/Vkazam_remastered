@@ -15,6 +15,8 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +31,16 @@ import android.widget.TextView;
 public interface VkazamDrawerAdapterElement {
 
     /**
+     * Retrieves id of type of specific implementation.
+     * ListView has different types of elements, with different layouts.
+     * Therefor it is needed to specify type identifier to refresh we,
+     * if new view differs from old view, when you scrolling.
+     *
+     * @return id of type
+     */
+    int getTypeId();
+
+    /**
      * Retrieves id of layout linked with specific implementation.
      * Each layout of subclass consists of icon, title and summary.
      * <br>
@@ -41,7 +53,7 @@ public interface VkazamDrawerAdapterElement {
      *
      * @return id of defined layout
      */
-    public abstract int getLayoutId();
+    int getLayoutId();
 
     /**
      * Retrieves id of icon of element. <strong>Note:</strong> if subclass has not
@@ -50,7 +62,7 @@ public interface VkazamDrawerAdapterElement {
      *
      * @return specified id of icon
      */
-    public abstract int getIconResId();
+    int getIconLayoutResId();
 
     /**
      * Retrieves id of title of element. <strong>Note:</strong> if subclass has not
@@ -59,7 +71,7 @@ public interface VkazamDrawerAdapterElement {
      *
      * @return specified id of icon
      */
-    public abstract int getTitleResId();
+    int getTitleLayoutResId();
 
     /**
      * Retrieves id of summary of element. <strong>Note:</strong> if subclass has not
@@ -68,7 +80,57 @@ public interface VkazamDrawerAdapterElement {
      *
      * @return specified id of icon
      */
-    public abstract int getSummaryResId();
+    int getSummaryLayoutResId();
+
+    /**
+     * Retrieves concrete icon as Drawable
+     *
+     * @return drawable representing icon
+     */
+    Drawable getIconDrawable();
+
+    /**
+     * Retrieves concrete icon as Bitmap
+     *
+     * @return drawable representing icon
+     */
+    Bitmap getIconBitmap();
+
+    /**
+     * Retrieves concrete icon as resource element
+     *
+     * @return id representing icon
+     */
+    int getIconId();
+
+
+    /**
+     * Retrieves concrete title as String
+     *
+     * @return title string
+     */
+    String getTitleString();
+
+    /**
+     * Retrieves concrete title as resource element
+     *
+     * @return id of title string
+     */
+    int getTitleId();
+
+    /**
+     * Retrieves concrete summary as String
+     *
+     * @return summary string
+     */
+    String getSummaryString();
+
+    /**
+     * Retrieves concrete summary as resource element
+     *
+     * @return id of summary string
+     */
+    int getSummaryId();
 
     /**
      * Common holder for all subclasses, that used by

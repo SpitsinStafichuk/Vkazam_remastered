@@ -15,9 +15,14 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.SpitsinStafichuk.vkazam_remastered.Constants;
 import com.SpitsinStafichuk.vkazam_remastered.adapters.components.VkazamDrawerAdapterElement;
 
 import java.util.List;
@@ -32,43 +37,101 @@ import java.util.List;
  * @since 2014-07-23
  */
 public class VkazamDrawerAdapter extends BindBaseAdapter {
+    public static final int COUNT_OF_ITEM_TYPES = 3;
 
+    private Context mContext;
     private List<VkazamDrawerAdapterElement> mItems;
 
-    public VkazamDrawerAdapter(List<VkazamDrawerAdapterElement> items) {
+    public VkazamDrawerAdapter(Context context, List<VkazamDrawerAdapterElement> items) {
         if (items == null) {
-            throw new NullPointerException("items must not be null");
+            throw new NullPointerException("items must be not null");
+        }
+
+        if (context == null) {
+            throw new NullPointerException("context must be not null");
         }
 
         mItems = items;
+        mContext = context;
     }
 
     @Override
-    protected View newView(ViewGroup parent) {
-        //TODO implement
-        return null;
+    protected View newView(ViewGroup parent, int position) {
+        VkazamDrawerAdapterElement element = mItems.get(position);
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(element.getLayoutId(), parent, false);
+
+        if (view != null) {
+            VkazamDrawerAdapterElement.ViewHolder holder = new VkazamDrawerAdapterElement.ViewHolder();
+            holder.icon = (ImageView) view.findViewById(element.getIconLayoutResId());
+            holder.title = (TextView) view.findViewById(element.getTitleLayoutResId());
+            holder.summary = (TextView) view.findViewById(element.getSummaryLayoutResId());
+            view.setTag(holder);
+        } else {
+            throw new IllegalStateException("View not created");
+        }
+
+        return view;
     }
 
     @Override
     protected void bindView(View view, int position) {
-        //TODO implement
+        if (view.getTag() == null) {
+            throw new IllegalArgumentException("view must contains this own holder");
+        }
+
+        VkazamDrawerAdapterElement element = mItems.get(position);
+        VkazamDrawerAdapterElement.ViewHolder holder = (VkazamDrawerAdapterElement.ViewHolder) view.getTag();
+
+        if (holder.icon != null) {
+            if (element.getIconId() != Constants.NO_ID) {
+                holder.icon.setImageResource(element.getIconId());
+            } else if (element.getIconDrawable() != null) {
+                holder.icon.setImageDrawable(element.getIconDrawable());
+            } else if (element.getIconBitmap() != null) {
+                holder.icon.setImageBitmap(element.getIconBitmap());
+            }
+        }
+
+        if (holder.title != null) {
+            if (element.getTitleId() != Constants.NO_ID) {
+                holder.title.setText(element.getTitleId());
+            } else if (element.getTitleString() != null) {
+                holder.title.setText(element.getTitleString());
+            }
+        }
+
+        if (holder.summary != null) {
+            if (element.getSummaryId() != Constants.NO_ID) {
+                holder.summary.setText(element.getSummaryId());
+            } else if (element.getSummaryString() != null) {
+                holder.summary.setText(element.getSummaryString());
+            }
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return mItems.get(position).getTypeId();
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return COUNT_OF_ITEM_TYPES;
     }
 
     @Override
     public int getCount() {
-        //TODO implement
-        return 0;
+        return mItems.size();
     }
 
     @Override
     public Object getItem(int position) {
-        //TODO implement
-        return null;
+        return mItems.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        //TODO implement
-        return 0;
+        return position;
     }
 }
