@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="gray">#bebebe</color>
-    <color name="gray_dark_very">#333333</color>
+    <color name="gray_dark_very">#505050</color>
+    <color name="gray_light_very">#E5E5E5</color>
     <color name="violet_light_graylish">#E0DCE3</color>
     <color name="violet_moderate">#AA66CC</color>
     <color name="white">#FFFFFF</color>

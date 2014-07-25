@@ -12,5 +12,21 @@
         <item name="android:background">@color/violet_moderate</item>
     </style>
 
+    <style name="DrawerTextPrimary" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textColor">@color/gray_dark_very</item>
+    </style>
+
+    <style name="DrawerTextSecondary" parent="android:TextAppearance.Holo.Small">
+        <item name="android:textColor">@color/gray_dark_very</item>
+    </style>
+
+    <style name="DrawerTextProfilePrimary" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="DrawerTextProfileSecondary" parent="android:TextAppearance.Holo.Small">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 
 </resources>

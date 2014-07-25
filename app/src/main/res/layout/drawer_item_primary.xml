@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/FAVORITES_PAGE"
-        style="@android:style/TextAppearance.Holo.Medium"/>
+        style="@style/DrawerTextPrimary"/>
 
 </LinearLayout>

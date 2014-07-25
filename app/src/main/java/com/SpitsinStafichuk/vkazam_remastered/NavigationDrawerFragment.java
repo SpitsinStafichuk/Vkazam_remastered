@@ -40,6 +40,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.SpitsinStafichuk.vkazam_remastered.adapters.VkazamDrawerAdapter;
+import com.SpitsinStafichuk.vkazam_remastered.adapters.components.DrawerPrimaryElement;
+import com.SpitsinStafichuk.vkazam_remastered.adapters.components.DrawerProfileElement;
+import com.SpitsinStafichuk.vkazam_remastered.adapters.components.DrawerSecondaryElement;
 import com.SpitsinStafichuk.vkazam_remastered.adapters.components.VkazamDrawerAdapterElement;
 
 import java.util.ArrayList;
@@ -116,6 +119,16 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         List<VkazamDrawerAdapterElement> elements = new ArrayList<VkazamDrawerAdapterElement>();
+        elements.add(new DrawerProfileElement.Builder().setIconRes(R.drawable.ic_vk_account_default).setTitleString("Test user account!!").setSummaryString("test@string.url").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Rec").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Rec2").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("His").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Fav").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Tr").build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Fin").build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Set").build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Ab").build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorite).setTitleString("Feed").build());
         BaseAdapter drawerAdapter = new VkazamDrawerAdapter(getActivity(), elements);
 
         mDrawerListView = (ListView) inflater.inflate(

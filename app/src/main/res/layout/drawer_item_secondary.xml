@@ -16,6 +16,7 @@
             android:id="@+id/icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="4dp"
             android:padding="6dp"
             android:src="@drawable/ic_navigation_favorite"/>
 
@@ -26,13 +27,13 @@
             android:layout_gravity="center"
             android:text="@string/FAVORITES_PAGE"
             android:textAllCaps="true"
-            style="@android:style/TextAppearance.Holo.Small"/>
+            style="@style/DrawerTextSecondary"/>
 
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@color/gray"/>
+        android:layout_height="2dp"
+        android:src="@color/gray_light_very"/>
 
 </LinearLayout>
