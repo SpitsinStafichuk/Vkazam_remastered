@@ -17,6 +17,14 @@
     <string name="test_account_email">text.email@text.com</string>
 
     <!--Navigation drawer strings-->
+    <string name="TAG_ONCE_PAGE">Tag once</string>
+    <string name="TAG_BY_TIMER_PAGE">Tag by timer</string>
+    <string name="HISTORY_PAGE">History</string>
     <string name="FAVORITES_PAGE">Favorites</string>
+    <string name="DELETED_PAGE">Deleted</string>
+    <string name="FINGERPRINTS_PAGE">Fingerprints</string>
+    <string name="SETTINGS_PAGE">Settings</string>
+    <string name="ABOUT_PAGE">About</string>
+    <string name="SEND_FEEDBACK_PAGE">Send feedback</string>
 
 </resources>

@@ -11,8 +11,7 @@
         android:id="@+id/icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_navigation_favorite"/>
+        android:padding="8dp"/>
 
     <TextView
         android:id="@+id/title"
