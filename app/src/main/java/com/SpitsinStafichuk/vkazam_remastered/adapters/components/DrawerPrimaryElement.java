@@ -15,6 +15,10 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.graphics.Typeface;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.SpitsinStafichuk.vkazam_remastered.Constants;
 import com.SpitsinStafichuk.vkazam_remastered.R;
 
@@ -55,6 +59,25 @@ public class DrawerPrimaryElement extends SimpleDrawerAdapterElement{
     @Override
     public int getSummaryLayoutResId() {
         return Constants.NO_ID;
+    }
+
+    @Override
+    public void setIconSelected(ImageView v, boolean selected) {
+        v.setSelected(selected);
+    }
+
+    @Override
+    public void setTitleSelected(TextView v, boolean selected) {
+        if (selected) {
+            v.setTypeface(null, Typeface.BOLD);
+        } else {
+            v.setTypeface(null, Typeface.NORMAL);
+        }
+    }
+
+    @Override
+    public void setSummarySelected(TextView v, boolean selected) {
+        //nothing because there is no summary
     }
 
     public static class Builder extends SimpleDrawerAdapterElement.Builder {

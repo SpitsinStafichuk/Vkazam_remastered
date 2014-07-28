@@ -32,10 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -81,6 +78,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListView;
+    private VkazamDrawerAdapter mDrawerAdapter;
     private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 0;
@@ -129,7 +127,7 @@ public class NavigationDrawerFragment extends Fragment {
         elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_settings).setTitleRes(R.string.SETTINGS_PAGE).build());
         elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_about).setTitleRes(R.string.ABOUT_PAGE).build());
         elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_email).setTitleRes(R.string.SEND_FEEDBACK_PAGE).build());
-        BaseAdapter drawerAdapter = new VkazamDrawerAdapter(getActivity(), elements);
+        mDrawerAdapter = new VkazamDrawerAdapter(getActivity(), elements);
 
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
@@ -139,7 +137,7 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(drawerAdapter);
+        mDrawerListView.setAdapter(mDrawerAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
@@ -226,6 +224,7 @@ public class NavigationDrawerFragment extends Fragment {
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
+            mDrawerAdapter.setItemChecked(position);
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

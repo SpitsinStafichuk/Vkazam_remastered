@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white_mostly_secondary">
+    android:background="@drawable/drawer_item_secondary_background">
 
     <LinearLayout
         android:orientation="horizontal"

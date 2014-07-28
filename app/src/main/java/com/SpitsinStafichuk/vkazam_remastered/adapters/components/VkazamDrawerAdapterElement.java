@@ -133,6 +133,36 @@ public interface VkazamDrawerAdapterElement {
     int getSummaryId();
 
     /**
+     * Calls when some external adapter wants to highlight its item or select this.
+     * Each type of drawer item must implement this method to provide it own
+     * selection style.
+     *
+     * @param v view of icon
+     * @param selected selected state (true - selected, false - not)
+     */
+    void setIconSelected(ImageView v, boolean selected);
+
+    /**
+     * Calls when some external adapter wants to highlight its item or select this.
+     * Each type of drawer item must implement this method to provide it own
+     * selection style.
+     *
+     * @param v view of title
+     * @param selected selected state (true - selected, false - not)
+     */
+    void setTitleSelected(TextView v, boolean selected);
+
+    /**
+     * Calls when some external adapter wants to highlight its item or select this.
+     * Each type of drawer item must implement this method to provide it own
+     * selection style.
+     *
+     * @param v view of summary
+     * @param selected selected state (true - selected, false - not)
+     */
+    void setSummarySelected(TextView v, boolean selected);
+
+    /**
      * Common holder for all subclasses, that used by
      * {@link com.SpitsinStafichuk.vkazam_remastered.adapters.VkazamDrawerAdapter}.
      *

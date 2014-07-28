@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/white_mostly_primary">
+    android:background="@drawable/drawer_item_primary_background">
 
     <ImageView
         android:id="@+id/icon"

@@ -21,7 +21,7 @@ import android.widget.BaseAdapter;
 
 /**
  * Abstract implementation of {@link android.widget.BaseAdapter}, that separates
- * getView into creating new view {@link BindBaseAdapter#newView(android.view.ViewGroup)}
+ * getView into creating new view {@link BindBaseAdapter#newView(android.view.ViewGroup, int)}
  * and binding existing view {@link BindBaseAdapter#bindView(android.view.View, int)}.
  *
  * @author Michael Spitsin

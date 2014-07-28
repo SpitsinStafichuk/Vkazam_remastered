@@ -41,6 +41,7 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
 
     private Context mContext;
     private List<VkazamDrawerAdapterElement> mItems;
+    private int mSelectedItemPosition = 1;
 
     public VkazamDrawerAdapter(Context context, List<VkazamDrawerAdapterElement> items) {
         if (items == null) {
@@ -91,6 +92,8 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
             } else if (element.getIconBitmap() != null) {
                 holder.icon.setImageBitmap(element.getIconBitmap());
             }
+
+            element.setIconSelected(holder.icon, mSelectedItemPosition == position);
         }
 
         if (holder.title != null) {
@@ -99,6 +102,8 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
             } else if (element.getTitleString() != null) {
                 holder.title.setText(element.getTitleString());
             }
+
+            element.setTitleSelected(holder.title, mSelectedItemPosition == position);
         }
 
         if (holder.summary != null) {
@@ -107,6 +112,8 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
             } else if (element.getSummaryString() != null) {
                 holder.summary.setText(element.getSummaryString());
             }
+
+            element.setSummarySelected(holder.summary, mSelectedItemPosition == position);
         }
     }
 
@@ -133,5 +140,9 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public void setItemChecked(int position) {
+        mSelectedItemPosition = position;
     }
 }
