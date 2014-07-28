@@ -118,15 +118,15 @@ public class NavigationDrawerFragment extends Fragment {
             Bundle savedInstanceState) {
         List<VkazamDrawerAdapterElement> elements = new ArrayList<VkazamDrawerAdapterElement>();
         elements.add(new DrawerProfileElement.Builder().setIconRes(R.drawable.ic_vk_account_default).setTitleString("Test user account!!").setSummaryString("test@string.url").build());
-        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_action_mic).setTitleRes(R.string.TAG_ONCE_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_action_mic).setTitleRes(R.string.TAG_BY_TIMER_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_action_view_as_list).setTitleRes(R.string.HISTORY_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_action_important).setTitleRes(R.string.FAVORITES_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_action_discard).setTitleRes(R.string.DELETED_PAGE).build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_ONCE_PAGE).build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_BY_TIMER_PAGE).build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_history).setTitleRes(R.string.HISTORY_PAGE).build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_favorites).setTitleRes(R.string.FAVORITES_PAGE).build());
+        elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_navigation_trash).setTitleRes(R.string.DELETED_PAGE).build());
         elements.add(new DrawerPrimaryElement.Builder().setIconRes(R.drawable.ic_launcher).setTitleRes(R.string.FINGERPRINTS_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_settings).setTitleRes(R.string.SETTINGS_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_about).setTitleRes(R.string.ABOUT_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_action_email).setTitleRes(R.string.SEND_FEEDBACK_PAGE).build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_settings).setTitleRes(R.string.SETTINGS_PAGE).build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_about).setTitleRes(R.string.ABOUT_PAGE).build());
+        elements.add(new DrawerSecondaryElement.Builder().setIconRes(R.drawable.ic_navigation_send_feedback).setTitleRes(R.string.SEND_FEEDBACK_PAGE).build());
         mDrawerAdapter = new VkazamDrawerAdapter(getActivity(), elements);
 
         mDrawerListView = (ListView) inflater.inflate(
