@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
@@ -137,30 +138,33 @@ public interface VkazamDrawerAdapterElement {
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
+     * @param context
      * @param v view of icon
      * @param selected selected state (true - selected, false - not)
      */
-    void setIconSelected(ImageView v, boolean selected);
+    void setIconSelected(Context context, ImageView v, boolean selected);
 
     /**
      * Calls when some external adapter wants to highlight its item or select this.
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
+     * @param context
      * @param v view of title
      * @param selected selected state (true - selected, false - not)
      */
-    void setTitleSelected(TextView v, boolean selected);
+    void setTitleSelected(Context context, TextView v, boolean selected);
 
     /**
      * Calls when some external adapter wants to highlight its item or select this.
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
+     * @param context
      * @param v view of summary
      * @param selected selected state (true - selected, false - not)
      */
-    void setSummarySelected(TextView v, boolean selected);
+    void setSummarySelected(Context context, TextView v, boolean selected);
 
     /**
      * Common holder for all subclasses, that used by

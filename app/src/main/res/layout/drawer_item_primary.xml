@@ -13,12 +13,14 @@
         android:layout_height="48dp"
         android:padding="8dp"/>
 
-    <TextView
+    <com.SpitsinStafichuk.vkazam_remastered.view.CustomFontTextView
+        xmlns:fonts="http://schemas.android.com/apk/res-auto"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/FAVORITES_PAGE"
+        fonts:fontName="Roboto-Light.ttf"
         style="@style/DrawerTextPrimary"/>
 
 </LinearLayout>

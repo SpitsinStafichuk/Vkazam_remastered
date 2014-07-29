@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,25 +63,25 @@ public class DrawerProfileElement extends SimpleDrawerAdapterElement{
     }
 
     @Override
-    public void setIconSelected(ImageView v, boolean selected) {
+    public void setIconSelected(Context context, ImageView v, boolean selected) {
         v.setSelected(selected);
     }
 
     @Override
-    public void setTitleSelected(TextView v, boolean selected) {
+    public void setTitleSelected(Context context, TextView v, boolean selected) {
         //nothing
     }
 
     @Override
-    public void setSummarySelected(TextView v, boolean selected) {
-        if (selected) {
-            v.setTypeface(null, Typeface.BOLD);
-        } else {
-            v.setTypeface(null, Typeface.NORMAL);
-        }
+    public void setSummarySelected(Context context, TextView v, boolean selected) {
+        //nothing
     }
 
     public static class Builder extends SimpleDrawerAdapterElement.Builder {
+
+        public Builder(Context context) {
+            super(context);
+        }
 
         @Override
         public SimpleDrawerAdapterElement build() {

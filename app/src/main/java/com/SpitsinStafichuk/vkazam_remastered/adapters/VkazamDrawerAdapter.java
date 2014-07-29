@@ -93,7 +93,7 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
                 holder.icon.setImageBitmap(element.getIconBitmap());
             }
 
-            element.setIconSelected(holder.icon, mSelectedItemPosition == position);
+            element.setIconSelected(mContext, holder.icon, mSelectedItemPosition == position);
         }
 
         if (holder.title != null) {
@@ -103,7 +103,7 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
                 holder.title.setText(element.getTitleString());
             }
 
-            element.setTitleSelected(holder.title, mSelectedItemPosition == position);
+            element.setTitleSelected(mContext, holder.title, mSelectedItemPosition == position);
         }
 
         if (holder.summary != null) {
@@ -113,7 +113,7 @@ public class VkazamDrawerAdapter extends BindBaseAdapter {
                 holder.summary.setText(element.getSummaryString());
             }
 
-            element.setSummarySelected(holder.summary, mSelectedItemPosition == position);
+            element.setSummarySelected(mContext, holder.summary, mSelectedItemPosition == position);
         }
     }
 

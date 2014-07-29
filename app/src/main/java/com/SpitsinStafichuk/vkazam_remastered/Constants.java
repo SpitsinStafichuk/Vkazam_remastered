@@ -23,4 +23,10 @@ package com.SpitsinStafichuk.vkazam_remastered;
  */
 public class Constants {
     public static final int NO_ID = -1;
+    public static final String ASSETS_FONTS_DIR = "fonts/";
+
+    //***FONTS NAMES***
+    public static final String ROBOTO_BOLD = "Roboto-Bold.ttf";
+    public static final String ROBOTO_REGULAR = "Roboto-Regular.ttf";
+    public static final String ROBOTO_LIGHT = "Roboto-Light.ttf";
 }

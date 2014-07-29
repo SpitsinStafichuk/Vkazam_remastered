@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,8 +33,13 @@ import com.SpitsinStafichuk.vkazam_remastered.R;
 @SuppressWarnings("unused")
 public class DrawerSecondaryElement extends SimpleDrawerAdapterElement{
 
+    private Typeface selectedTypeface;
+    private Typeface defaultTypeface;
+
     private DrawerSecondaryElement(Builder builder) {
         super(builder);
+        selectedTypeface = Typeface.createFromAsset(mContext.getAssets(), Constants.ASSETS_FONTS_DIR + Constants.ROBOTO_BOLD);
+        defaultTypeface = Typeface.createFromAsset(mContext.getAssets(), Constants.ASSETS_FONTS_DIR + Constants.ROBOTO_REGULAR);
     }
 
     @Override
@@ -62,25 +68,29 @@ public class DrawerSecondaryElement extends SimpleDrawerAdapterElement{
     }
 
     @Override
-    public void setIconSelected(ImageView v, boolean selected) {
+    public void setIconSelected(Context context, ImageView v, boolean selected) {
         v.setSelected(selected);
     }
 
     @Override
-    public void setTitleSelected(TextView v, boolean selected) {
+    public void setTitleSelected(Context context, TextView v, boolean selected) {
         if (selected) {
-            v.setTypeface(null, Typeface.BOLD);
+            v.setTypeface(selectedTypeface);
         } else {
-            v.setTypeface(null, Typeface.NORMAL);
+            v.setTypeface(defaultTypeface);
         }
     }
 
     @Override
-    public void setSummarySelected(TextView v, boolean selected) {
+    public void setSummarySelected(Context context, TextView v, boolean selected) {
         //nothing because there is no summary
     }
 
     public static class Builder extends SimpleDrawerAdapterElement.Builder {
+
+        public Builder(Context context) {
+            super(context);
+        }
 
         @Override
         public SimpleDrawerAdapterElement build() {

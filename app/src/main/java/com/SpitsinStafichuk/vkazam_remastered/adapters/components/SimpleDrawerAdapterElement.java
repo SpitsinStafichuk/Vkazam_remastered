@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
@@ -34,6 +35,8 @@ import com.SpitsinStafichuk.vkazam_remastered.Constants;
 @SuppressWarnings("unused")
 public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterElement{
 
+    protected Context mContext;
+
     private int iconRes;
     private Drawable iconDrawable;
     private Bitmap iconBitmap;
@@ -43,6 +46,7 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
     private String summaryString;
 
     protected SimpleDrawerAdapterElement(Builder builder) {
+        this.mContext = builder.context;
         this.iconRes = builder.iconRes;
         this.iconDrawable = builder.iconDrawable;
         this.iconBitmap = builder.iconBitmap;
@@ -96,6 +100,7 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
      * @since 2014-07-25
      */
     public abstract static class Builder {
+        private Context context;
         private int iconRes = Constants.NO_ID;
         private Drawable iconDrawable;
         private Bitmap iconBitmap;
@@ -103,6 +108,10 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
         private String titleString;
         private int summaryRes = Constants.NO_ID;
         private String summaryString;
+
+        public Builder(Context context) {
+            this.context = context;
+        }
 
         @SuppressWarnings("unused")
         public Builder setIconRes(int iconRes) {
