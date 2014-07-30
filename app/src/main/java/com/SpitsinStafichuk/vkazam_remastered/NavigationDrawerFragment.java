@@ -81,7 +81,9 @@ public class NavigationDrawerFragment extends Fragment {
     private VkazamDrawerAdapter mDrawerAdapter;
     private View mFragmentContainerView;
 
-    private int mCurrentSelectedPosition = 0;
+    private List<VkazamDrawerAdapterElement> mDrawerAdapterElements;
+
+    private int mCurrentSelectedPosition = 1;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -102,8 +104,6 @@ public class NavigationDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }
 
-        // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -111,23 +111,26 @@ public class NavigationDrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
+
+        // Select either the default item (0) or the last selected item.
+        selectItem(mCurrentSelectedPosition);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        List<VkazamDrawerAdapterElement> elements = new ArrayList<VkazamDrawerAdapterElement>();
-        elements.add(new DrawerProfileElement.Builder(getActivity()).setIconRes(R.drawable.ic_vk_account_default).setTitleString("Test user account!!").setSummaryString("test@string.url").build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_ONCE_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_BY_TIMER_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_history).setTitleRes(R.string.HISTORY_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_favorites).setTitleRes(R.string.FAVORITES_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_trash).setTitleRes(R.string.DELETED_PAGE).build());
-        elements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_launcher).setTitleRes(R.string.FINGERPRINTS_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_settings).setTitleRes(R.string.SETTINGS_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_about).setTitleRes(R.string.ABOUT_PAGE).build());
-        elements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_send_feedback).setTitleRes(R.string.SEND_FEEDBACK_PAGE).build());
-        mDrawerAdapter = new VkazamDrawerAdapter(getActivity(), elements);
+        mDrawerAdapterElements = new ArrayList<VkazamDrawerAdapterElement>();
+        mDrawerAdapterElements.add(new DrawerProfileElement.Builder(getActivity()).setIconRes(R.drawable.ic_vk_account_default).setTitleString("Test user account!!").setSummaryString("test@string.url").build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_ONCE_PAGE).setOpeningFragmentName(FragmentName.TAG_ONCE).build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_tag).setTitleRes(R.string.TAG_BY_TIMER_PAGE).setOpeningFragmentName(FragmentName.TAG_BY_TIMER).build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_history).setTitleRes(R.string.HISTORY_PAGE).setOpeningFragmentName(FragmentName.HISTORY).build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_favorites).setTitleRes(R.string.FAVORITES_PAGE).setOpeningFragmentName(FragmentName.FAVORITES).build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_trash).setTitleRes(R.string.DELETED_PAGE).setOpeningFragmentName(FragmentName.TRASH).build());
+        mDrawerAdapterElements.add(new DrawerPrimaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_launcher).setTitleRes(R.string.FINGERPRINTS_PAGE).setOpeningFragmentName(FragmentName.FINGERPRINTS).build());
+        mDrawerAdapterElements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_settings).setTitleRes(R.string.SETTINGS_PAGE).setOpeningFragmentName(FragmentName.SETTINGS).build());
+        mDrawerAdapterElements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_about).setTitleRes(R.string.ABOUT_PAGE).setOpeningFragmentName(FragmentName.ABOUT).build());
+        mDrawerAdapterElements.add(new DrawerSecondaryElement.Builder(getActivity()).setIconRes(R.drawable.ic_navigation_send_feedback).setTitleRes(R.string.SEND_FEEDBACK_PAGE).setOpeningFragmentName(FragmentName.SEND_FEEDBACK).build());
+        mDrawerAdapter = new VkazamDrawerAdapter(getActivity(), mDrawerAdapterElements);
 
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
@@ -139,6 +142,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(mDrawerAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
         return mDrawerListView;
     }
 
@@ -230,7 +234,7 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         if (mCallbacks != null) {
-            mCallbacks.onNavigationDrawerItemSelected(position);
+            mCallbacks.onNavigationDrawerItemSelected(mDrawerAdapterElements.get(position), position);
         }
     }
 
@@ -309,7 +313,10 @@ public class NavigationDrawerFragment extends Fragment {
     public static interface NavigationDrawerCallbacks {
         /**
          * Called when an item in the navigation drawer is selected.
+         *
+         * @param selectedItem item that was selected
+         * @param position position of item that was selected
          */
-        void onNavigationDrawerItemSelected(int position);
+        void onNavigationDrawerItemSelected(VkazamDrawerAdapterElement selectedItem, int position);
     }
 }

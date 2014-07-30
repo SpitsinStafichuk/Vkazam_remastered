@@ -15,11 +15,15 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.SpitsinStafichuk.vkazam_remastered.FragmentName;
 
 /**
  * Main class for all {@link com.SpitsinStafichuk.vkazam_remastered.adapters.VkazamDrawerAdapter}
@@ -165,6 +169,14 @@ public interface VkazamDrawerAdapterElement {
      * @param selected selected state (true - selected, false - not)
      */
     void setSummarySelected(Context context, TextView v, boolean selected);
+
+    /**
+     * Retrieve fragment name related to this drawer item. Fragment that associated whit this name
+     * should be opened, when item is clicked
+     *
+     * @return fragment linked to this item.
+     */
+    FragmentName getOpeningFragmentName();
 
     /**
      * Common holder for all subclasses, that used by

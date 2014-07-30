@@ -15,11 +15,13 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 import com.SpitsinStafichuk.vkazam_remastered.Constants;
+import com.SpitsinStafichuk.vkazam_remastered.FragmentName;
 
 /**
  * Simple implementation of {@link VkazamDrawerAdapterElement}. Contains
@@ -44,6 +46,7 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
     private String titleString;
     private int summaryRes;
     private String summaryString;
+    private FragmentName fragmentName;
 
     protected SimpleDrawerAdapterElement(Builder builder) {
         this.mContext = builder.context;
@@ -54,6 +57,7 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
         this.titleString = builder.titleString;
         this.summaryRes = builder.summaryRes;
         this.summaryString = builder.summaryString;
+        this.fragmentName = builder.fragmentName;
     }
 
     @Override
@@ -91,6 +95,11 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
         return summaryRes;
     }
 
+    @Override
+    public FragmentName getOpeningFragmentName() {
+        return fragmentName;
+    }
+
     /**
      * Common builder for {@link SimpleDrawerAdapterElement} that allows to choose
      * what type of icon (res, drawable, bitmap), title (res, string) and summary (res, string)
@@ -108,6 +117,7 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
         private String titleString;
         private int summaryRes = Constants.NO_ID;
         private String summaryString;
+        private FragmentName fragmentName;
 
         public Builder(Context context) {
             this.context = context;
@@ -152,6 +162,12 @@ public abstract class SimpleDrawerAdapterElement implements VkazamDrawerAdapterE
         @SuppressWarnings("unused")
         public Builder setSummaryString(String summaryString) {
             this.summaryString = summaryString;
+            return this;
+        }
+
+        @SuppressWarnings("unused")
+        public Builder setOpeningFragmentName(FragmentName fragmentName) {
+            this.fragmentName = fragmentName;
             return this;
         }
 

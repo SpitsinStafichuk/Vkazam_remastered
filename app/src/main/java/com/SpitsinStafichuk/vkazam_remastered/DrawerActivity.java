@@ -28,6 +28,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.SpitsinStafichuk.vkazam_remastered.adapters.components.VkazamDrawerAdapterElement;
+
 /**
  * @author Michael Spitsin
  * @since 2014-07-21
@@ -61,26 +63,50 @@ public class DrawerActivity extends Activity
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+    public void onNavigationDrawerItemSelected(VkazamDrawerAdapterElement element, int position) {
+        if ((element != null) && (element.getOpeningFragmentName() != null)) {
+            // update the main content by replacing fragments
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, getFragmentInstanceByName(element.getOpeningFragmentName()))
+                    .commit();
+        }
+    }
+
+    /**
+     * Retrieves new instance of fragment associated with specified name.
+     *
+     * @param name name of fragment
+     * @return new instance of fragment
+     * @throws java.lang.IllegalArgumentException
+     */
+    private Fragment getFragmentInstanceByName(FragmentName name) {
+        switch (name) {
+            case TAG_ONCE:
+                return PlaceholderFragment.newInstance(111);
+            case TAG_BY_TIMER:
+                return PlaceholderFragment.newInstance(121);
+            case HISTORY:
+                return PlaceholderFragment.newInstance(113);
+            case FAVORITES:
+                return PlaceholderFragment.newInstance(411);
+            case TRASH:
+                return PlaceholderFragment.newInstance(155);
+            case FINGERPRINTS:
+                return PlaceholderFragment.newInstance(661);
+            case SETTINGS:
+                return PlaceholderFragment.newInstance(616);
+            case ABOUT:
+                return PlaceholderFragment.newInstance(7);
+            case SEND_FEEDBACK:
+                return PlaceholderFragment.newInstance(88);
+            default:
+                throw new IllegalArgumentException("There is no fragment associated with name: " + name);
+        }
     }
 
     public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
+        mTitle = number + "";
     }
 
     public void restoreActionBar() {
