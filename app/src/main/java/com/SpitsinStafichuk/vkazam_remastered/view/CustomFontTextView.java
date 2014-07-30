@@ -28,6 +28,7 @@ import com.SpitsinStafichuk.vkazam_remastered.R;
  * @author Michael Spitsin
  * @since 2014-07-29
  */
+@SuppressWarnings("unused")
 public class CustomFontTextView extends TextView{
 
     public CustomFontTextView(Context context) {

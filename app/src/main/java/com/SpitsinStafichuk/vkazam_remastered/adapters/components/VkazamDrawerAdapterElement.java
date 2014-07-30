@@ -15,11 +15,9 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -142,7 +140,7 @@ public interface VkazamDrawerAdapterElement {
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
-     * @param context
+     * @param context context that may helps to change view (for example: replace image by drawable resource)
      * @param v view of icon
      * @param selected selected state (true - selected, false - not)
      */
@@ -153,7 +151,7 @@ public interface VkazamDrawerAdapterElement {
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
-     * @param context
+     * @param context context that may helps to change view (for example: replace text by string resource)
      * @param v view of title
      * @param selected selected state (true - selected, false - not)
      */
@@ -164,7 +162,7 @@ public interface VkazamDrawerAdapterElement {
      * Each type of drawer item must implement this method to provide it own
      * selection style.
      *
-     * @param context
+     * @param context context that may helps to change view (for example: replace text by string resource)
      * @param v view of summary
      * @param selected selected state (true - selected, false - not)
      */

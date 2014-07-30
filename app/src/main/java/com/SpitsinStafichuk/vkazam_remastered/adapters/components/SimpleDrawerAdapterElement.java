@@ -15,7 +15,6 @@
  *******************************************************************************/
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;

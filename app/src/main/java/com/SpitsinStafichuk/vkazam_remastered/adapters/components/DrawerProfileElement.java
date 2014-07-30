@@ -16,11 +16,9 @@
 package com.SpitsinStafichuk.vkazam_remastered.adapters.components;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.SpitsinStafichuk.vkazam_remastered.Constants;
 import com.SpitsinStafichuk.vkazam_remastered.R;
 
 /**

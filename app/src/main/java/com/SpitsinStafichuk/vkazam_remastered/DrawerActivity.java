@@ -111,9 +111,12 @@ public class DrawerActivity extends Activity
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(mTitle);
+        }
     }
 
 
@@ -136,10 +139,7 @@ public class DrawerActivity extends Activity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     /**
@@ -170,8 +170,7 @@ public class DrawerActivity extends Activity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_drawer, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_drawer, container, false);
         }
 
         @Override

@@ -11,6 +11,7 @@ import android.widget.ImageView;
  * @author Michael Spitsin
  * @since 2014-07-22
  */
+@SuppressWarnings("unused")
 public class SquareImageView extends ImageView{
 
     public SquareImageView(Context context) {
