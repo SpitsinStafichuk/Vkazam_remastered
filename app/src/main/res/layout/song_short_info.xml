@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/song_short_info_default_margin"
+    android:background="@color/gray_light_very">
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/coverArt"
+            android:layout_width="@dimen/song_cover_shortcut_width"
+            android:layout_height="@dimen/song_cover_shortcut_height"/>
+        
+        <ImageButton
+            android:id="@+id/playPause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.5f"
+            android:src="@android:drawable/ic_media_play"
+            android:background="@android:color/transparent"/>
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/song_short_info_default_margin"
+        android:orientation="vertical">
+
+        <com.SpitsinStafichuk.vkazam_remastered.view.CustomFontTextView
+            xmlns:fonts="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Unknown Episode Of My Beauty Story"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="1"
+            fonts:fontName="Roboto-Light.ttf"
+            style="@style/SongShortInfoPrimaryText"/>
+
+        <com.SpitsinStafichuk.vkazam_remastered.view.CustomFontTextView
+            xmlns:fonts="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/song_short_info_default_margin"
+            android:text="Equilibrium"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="1"
+            fonts:fontName="Roboto-Regular.ttf"
+            style="@style/SongShortInfoSecondaryText"/>
+
+        <com.SpitsinStafichuk.vkazam_remastered.view.CustomFontTextView
+            xmlns:fonts="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tagDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:text="18 Jan. 2014"
+            android:singleLine="true"
+            fonts:fontName="Roboto-Italic.ttf"
+            style="@style/SongShortInfoOptionalText"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

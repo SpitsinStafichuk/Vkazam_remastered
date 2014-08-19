@@ -28,5 +28,17 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="SongShortInfoPrimaryText" parent="android:TextAppearance.Holo.Large">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/gray_dark_very</item>
+    </style>
+
+    <style name="SongShortInfoSecondaryText" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textColor">@color/gray_dark_very</item>
+    </style>
+
+    <style name="SongShortInfoOptionalText" parent="android:TextAppearance.Holo.Small">
+        <item name="android:textColor">@color/gray</item>
+    </style>
 
 </resources>
